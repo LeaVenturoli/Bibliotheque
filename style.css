@@ -1,0 +1,437 @@
+html,
+body {
+  height: 100%;
+}
+
+* {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.contour {
+  border: 2px solid #000000;
+  padding: 5%; /* Utilisation de pourcentages */
+  width: 40%; /* Utilisation de pourcentages */
+  height: auto; /* Ajustement automatique de la hauteur */
+  background-color: #27556c;
+  border-radius: 50% 20% / 10% 40%;
+  top: 5%;
+  left: 30%;
+  position: absolute;
+}
+
+.contour-1{
+    border: 2px solid #27556c;
+    padding: 3%;
+    height: auto;
+    background-color: #27556c;
+    border-radius: 50% 20% / 10% 40%;
+    left: 30%;
+    top: 25%;
+    position: absolute;
+}
+
+.contourbvn {
+    border: 2px solid #000000;
+    padding: 5%;
+    width: 30%;
+    height: auto;
+    background-color: #27556c;
+    border-radius: 50% 20% / 10% 40%;
+    top: 20%;
+    left: 30%;
+    position: absolute;
+}
+
+.contour2 {
+  border: 2px solid #000000;
+  padding: 5%; /* Utilisation de pourcentages */
+  width: 30%; /* Utilisation de pourcentages */
+  height: auto; /* Ajustement automatique de la hauteur */
+  background-color: #27556c;
+  border-radius: 50% 20% / 10% 40%;
+  top: 15%;
+  left: 32%;
+  position: absolute;
+}
+
+::placeholder {
+  color: black;
+}
+
+#bienvenue {
+  font-size: 50px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 800;
+}
+
+#barre {
+  font-size: 20px;
+  width: 84%;
+  background-color: #d1dfe6;
+}
+
+#bouton_recherche {
+  width: 14%;
+  background-color: #d1dfe6;
+  text-align: center;
+  font-size: 20px;
+}
+
+body {
+  background-color: #6d90a1;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#possede {
+  font-size: 25px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 800;
+}
+
+.bouton-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.bouton {
+  padding: 0;
+  width: 450px;
+  height: 450px;
+  font-size: 30px;
+  background-color: #E4D2E8;
+  color: #000000;
+  border: none;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+.bouton:hover {
+  background-color: #A070A8;
+}
+
+.bouton-souhait {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.bouton-souhait2 {
+  padding: 0;
+  width: 500px;
+  height: 100px;
+  margin-right: 10px;
+  font-size: 30px;
+  background-color: #E4D2E8;
+  color: #000000;
+  border: none;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.bouton-souhait2:hover {
+  background-color: #A070A8;
+}
+
+header {
+  background-color: #E4D2E8;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  top: 0;
+  left: 0;
+  width: 99%;
+}
+
+#deco {
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#deco2 {
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.retour {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+
+}
+
+.retour1 {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+  border: 1px solid #27556c;
+  font-size: 15px;
+  font-family: "Courier New", Courier, monospace;
+
+}
+
+#bas {
+  background-color: #E4D2E8;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  bottom: 0px;
+  width: 99%;
+  position: relative;
+  border-radius: 10px;
+  top: 15px;
+}
+
+#bas1 {
+  background-color: #E4D2E8;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  width: 98%;
+  position: absolute;
+  bottom: 10px;
+  border-radius: 10px;
+
+}
+
+.livres-ajouter-recement {
+  background-color: #E4D2E8;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: "Courier New", Courier, monospace;
+}
+
+.livres-ajouter-recement h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.livres-ajouter-recement ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.livres-ajouter-recement li {
+  font-size: 25px;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.livres-image {
+  width: 200px;
+  height: 200px;
+  margin-right: 10px;
+}
+
+.livres-details {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.result-list {
+  list-style: none;
+  padding: 0;
+}
+
+.result-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-title {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.author {
+  color: #555;
+}
+
+.genre {
+  font-style: italic;
+  color: #777;
+}
+
+.note {
+  font-weight: bold;
+  color: #ff6600;
+}
+
+.no-result {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.suppr {
+  border: 2px solid #27556c;
+  padding: 45px;
+  width: 30%;
+  background-color: #27556c;
+  border-radius: 50% 20% / 10% 40%;
+  margin: 0 auto;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.titrelivre {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.suppr label {
+  font-size: 20px;
+  color: #fff;
+  display: block;
+  margin-bottom: 10px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.suppr select {
+  width: 100%;
+  font-size: 18px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.suppr input[type="submit"] {
+  background-color: #d1dfe6;
+  color: #333;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.suppr input[type="submit"]:hover {
+  background-color: #a0bcd0;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.bibliotheque {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+thead {
+  background-color: #333;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 20px;
+}
+
+.styled-table th,
+.styled-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.styled-table th {
+  background-color: #f2f2f2;
+}
+
+.styled-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.styled-table tr:hover {
+  background-color: #ddd;
+}
+
+.livres-image {
+  max-width: 100px;
+  max-height: 100px;
+  border: 1px solid #ddd;
+}
+
+.success-message {
+  background-color: #4CAF50;
+  color: black;
+  padding: 10px;
+  text-align: center;
+}
+
+.titreh2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
