@@ -1,0 +1,7 @@
+POST http://localhost:8080/User/login.php HTTP/1.1
+content-type: application/json
+
+{
+     "MAIL": "leaventu@gmail.com",
+     "MDP": "M@rgo0810"
+ }
