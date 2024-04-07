@@ -1,6 +1,6 @@
 <?php
-
-require_once ("../base_de_donnee/bdd.php");
+session_start();
+require_once ("bdd.php");
 
 $id = $_POST['id_livre'];
 $modif_livre = $_POST['nom_livre'];

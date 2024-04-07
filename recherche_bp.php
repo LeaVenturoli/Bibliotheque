@@ -29,8 +29,8 @@
 
     </header>
     <?php
-    session_start();
-    require_once ("../base_de_donnee/bdd.php");
+session_start();
+require_once ("bdd.php");
 
     if (isset($_GET['query'])) {
         $search_query = $_GET['query'];

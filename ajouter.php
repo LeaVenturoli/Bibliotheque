@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once ("../base_de_donnee/bdd.php");
+require_once ("bdd.php");
 
 if (isset($_SESSION['ID_UTILISATEUR'])) {
     $id_perso = $_SESSION["ID_UTILISATEUR"];

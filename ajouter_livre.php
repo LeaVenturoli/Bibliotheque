@@ -21,8 +21,8 @@
     <br><br>
 
     <?php
-    session_start();
-    require_once ("../base_de_donnee/bdd.php");
+session_start();
+require_once ("bdd.php");
 
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
