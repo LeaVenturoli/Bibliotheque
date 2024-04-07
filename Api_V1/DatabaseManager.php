@@ -51,7 +51,7 @@ class DatabaseManager {
     } 
 
     public function getLivre(){
-        $stmt = $this->connection->prepare("SELECT * FROM livres ");
+        $stmt = $this->connection->prepare("SELECT * FROM livres WHERE ID_UTILISATEUR = ? ");
         $stmt->execute();
         $result = $stmt->get_result();
         
