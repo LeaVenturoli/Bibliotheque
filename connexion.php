@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once ("../Bibliotheque/bdd.php");
+require_once ("bdd.php");
 
 $MDP = $_POST['MDP'];
 $email = $_POST['mail'];

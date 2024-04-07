@@ -1,7 +1,13 @@
-POST http://localhost:8080/User/login.php HTTP/1.1
+# POST http://172.20.10.6:8080/User/login.php HTTP/1.1
+# content-type: application/json
+
+# {
+#      "MAIL": "test@test.fr",
+#      "MDP": "test"
+#  }
+
+
+POST http://192.168.1.62:8080/livres/get.php HTTP/1.1
 content-type: application/json
 
-{
-     "MAIL": "leaventu@gmail.com",
-     "MDP": "M@rgo0810"
- }
+

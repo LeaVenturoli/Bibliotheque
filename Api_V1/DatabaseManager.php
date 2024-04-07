@@ -25,6 +25,7 @@ class DatabaseManager {
     // }
 
 
+
     public function connectUser($MAIL, $MDP) {
         $stmt = $this->connection->prepare("SELECT * FROM utilisateurs WHERE MAIL = ?");
         $stmt->bind_param("s", $MAIL);
@@ -33,9 +34,10 @@ class DatabaseManager {
     
         if ($result && $result->num_rows > 0) {
             $user = $result->fetch_assoc();
-            $hashedPassword = $user['MDP']; 
+            $hashedPassword = $user['MDP'];
+            $hashedInputPassword = hash('sha256', $MDP); 
     
-            if (password_verify($MDP, $hashedPassword)) {
+            if ($hashedInputPassword === $hashedPassword) {
                 $stmt->close();
                 return $user; 
             } else {
@@ -46,8 +48,32 @@ class DatabaseManager {
             $stmt->close();
             return false; 
         }
+    } 
+
+    public function getLivre(){
+        $stmt = $this->connection->prepare("SELECT * FROM livres ");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        $livres = array(); 
+        
+        if ($result->num_rows > 0){
+            while($row = $result->fetch_assoc()) {
+                $livre = array(
+                    "ID_UTILISATEUR" => $row["ID_UTILISATEUR"],
+                    "NOM_LIVRE" => $row["NOM_LIVRE"],
+                    "TOME" => $row["TOME"],
+                    "AUTEUR" => $row["AUTEUR"]
+                );
+                $livres[] = $livre; // Utiliser $livre au lieu de $livres
+            }
+        }
+        return json_encode($livres);
+    }
+
+    public function postLivre(){
+        // insertion
     }
     
-
 }
 ?>

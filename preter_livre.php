@@ -29,8 +29,8 @@ if (isset($_GET['livre_id'])) {
 
   <?php
 
-  session_start();
-  require_once ("../base_de_donnee/bdd.php");
+session_start();
+require_once ("bdd.php");
 
   if (isset($_GET['mise'])) {
     $test = $_GET['mise'];

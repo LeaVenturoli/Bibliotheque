@@ -21,16 +21,14 @@ if ($method == 'POST') {
     $user = $databaseManager->connectUser($MAIL, $MDP); 
 
     if ($user !== false) {
-        
         http_response_code(200); 
-        echo json_encode(array("success" => true, "user" => $user));
+        echo json_encode(array("success" => true, "user_id" => $user['ID_UTILISATEUR'], "prenom" => $user['PRENOM'], "user" => $user));
     } else {
-
         http_response_code(401); 
         echo json_encode(array("success" => false, "error" => "Invalid credentials"));
     }
 } else {
-
     http_response_code(405); 
     echo json_encode(array("success" => false, "error" => "Invalid request method"));
 }
+?>

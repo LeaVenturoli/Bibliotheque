@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once ("../base_de_donnee/bdd.php");
+require_once ("bdd.php");
 
 if (!isset($_SESSION["NOM"])) {
     header("location: index.php");
