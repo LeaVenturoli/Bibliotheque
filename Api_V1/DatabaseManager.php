@@ -51,7 +51,7 @@ class DatabaseManager {
     } 
 
     public function getLivre($ID_UTILISATEUR) {
-        $stmt = $this->connection->prepare("SELECT * FROM livres WHERE ID_UTILISATEUR = ?");
+        $stmt = $this->connection->prepare("SELECT * FROM livres WHERE ID_UTILISATEUR = ? AND SOUHAIT = 0");
         $stmt->bind_param("i", $ID_UTILISATEUR);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -97,7 +97,41 @@ class DatabaseManager {
                 $livres[] = $livre;
             }
         }
-        return $livres; // Renvoyer les livres souhaités
+        return json_encode(array("success" => true, "livres" => $livres));
     }
+
+    public function nombreLivre($userId) {
+        // Assurez-vous d'ajuster cette requête en fonction de votre schéma de base de données
+        $query = "SELECT COUNT(*) AS nombre_livres FROM livres WHERE ID_UTILISATEUR = ? AND SOUHAIT = 0";
+        
+        // Préparation de la requête
+        $stmt = $this->connection->prepare($query);
+        
+        // Liaison des paramètres
+        $stmt->bind_param("i", $userId);
+        
+        // Exécution de la requête
+        if($stmt->execute()) {
+            // Récupération du résultat
+            $result = $stmt->get_result();
+            
+            // Vérification s'il y a des lignes retournées
+            if($result->num_rows == 1) {
+                // Récupération du nombre de livres
+                $row = $result->fetch_assoc();
+                $nombreLivre = $row['nombre_livres'];
+                
+                // Retourner le nombre de livres
+                return $nombreLivre;
+            } else {
+                // En cas d'erreur ou de résultat non trouvé
+                return false;
+            }
+        } else {
+            // En cas d'échec de l'exécution de la requête
+            return false;
+        }
+    }
+    
 }
 ?>
