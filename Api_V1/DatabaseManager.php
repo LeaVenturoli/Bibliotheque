@@ -50,30 +50,54 @@ class DatabaseManager {
         }
     } 
 
-    public function getLivre(){
-        $stmt = $this->connection->prepare("SELECT * FROM livres WHERE ID_UTILISATEUR = ? ");
+    public function getLivre($ID_UTILISATEUR) {
+        $stmt = $this->connection->prepare("SELECT * FROM livres WHERE ID_UTILISATEUR = ?");
+        $stmt->bind_param("i", $ID_UTILISATEUR);
         $stmt->execute();
         $result = $stmt->get_result();
         
         $livres = array(); 
         
-        if ($result->num_rows > 0){
+        if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $livre = array(
-                    "ID_UTILISATEUR" => $row["ID_UTILISATEUR"],
+                    "ID_LIVRE" => $row["ID"],
                     "NOM_LIVRE" => $row["NOM_LIVRE"],
                     "TOME" => $row["TOME"],
                     "AUTEUR" => $row["AUTEUR"]
                 );
-                $livres[] = $livre; // Utiliser $livre au lieu de $livres
+                $livres[] = $livre;
             }
         }
-        return json_encode($livres);
+
+        return json_encode(array("success" => true, "livres" => $livres));
     }
 
-    public function postLivre(){
-        // insertion
+    public function postLivre() {
+        // Insertion d'un livre dans la base de données
     }
     
+
+    public function souhaitLivre($userID){
+        $stmt = $this->connection->prepare("SELECT * FROM livres WHERE ID_UTILISATEUR = ? AND SOUHAIT = 1");
+        $stmt->bind_param("i", $userID); // i pour un entier
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        $livres = array(); 
+        
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $livre = array(
+                    "ID_LIVRE" => $row["ID"],
+                    "NOM_LIVRE" => $row["NOM_LIVRE"],
+                    "TOME" => $row["TOME"],
+                    "AUTEUR" => $row["AUTEUR"]
+                );
+                $livres[] = $livre;
+            }
+        }
+        return $livres; // Renvoyer les livres souhaités
+    }
 }
 ?>

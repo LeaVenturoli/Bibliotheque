@@ -22,7 +22,7 @@ if ($method == 'POST') {
 
     if ($user !== false) {
         http_response_code(200); 
-        echo json_encode(array("success" => true, "user_id" => $user['ID_UTILISATEUR'], "prenom" => $user['PRENOM'], "user" => $user));
+        echo json_encode(array("success" => true, "ID_UTILISATEUR" => $user['ID_UTILISATEUR'], "prenom" => $user['PRENOM'], "user" => $user));
     } else {
         http_response_code(401); 
         echo json_encode(array("success" => false, "error" => "Invalid credentials"));

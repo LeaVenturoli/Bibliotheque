@@ -1,15 +1,25 @@
 <?php
+
 require_once __DIR__.'/../DatabaseManager.php';
 
 $databaseManager = new DatabaseManager();
-
-$livres = $databaseManager->getLivre();
+$jsondata = file_get_contents('php://input');
+$data = json_decode($jsondata, true);
+$method = $_SERVER['REQUEST_METHOD'];
 
 header('Content-Type: application/json');
 
-if ($livres !== false) {
-    echo json_encode(array('success' => true, 'livres' => $livres));
+if($method == 'POST') {
+    if(!isset($data['user_id'])) {
+        http_response_code(400);
+        echo json_encode(array("success" => false, "error" => "Requête invalide"));
+    } else {
+        $livres = $databaseManager->getLivre($data['user_id']);
+        echo $livres;
+    }
 } else {
-    echo json_encode(array('success' => false, 'message' => 'No books found.'));
+    http_response_code(405);
+    echo json_encode(array("success" => false, "error" => "Méthode non autorisée"));
 }
+
 ?>
