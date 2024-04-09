@@ -72,7 +72,8 @@ class DatabaseManager {
         return json_encode(array("success" => true, "livres" => $livres));
     }
 
-    public function postLivre($ID_UTILISATEUR, $titre, $tome, $auteur, $genre, $editions, $date) {
+    
+    public function postLivre(string $ID_UTILISATEUR, string $titre, ?string $tome, string $auteur, string $genre, string $editions, string $date): bool {
         $stmt = $this->connection->prepare("INSERT INTO livres (ID_UTILISATEUR, NOM_LIVRE, TOME, AUTEUR, GENRE, EDITIONS, DATE_AJOUT) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sssssss", $ID_UTILISATEUR, $titre, $tome, $auteur, $genre, $editions, $date);
         
