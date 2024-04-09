@@ -2,9 +2,8 @@
 class DatabaseManager {
     private $connection;
 
-    public function __construct() {
-        $config = include('database.php');
-        $this->connection = new mysqli($config['host'], $config['username'], $config['password'], $config['database']);
+    public function __construct($conn) {
+        $this->connection = $conn;
         if ($this->connection->connect_error) {
             throw new Exception("Erreur de connexion à la base de données : " . $this->connection->connect_error);
         }
@@ -73,9 +72,10 @@ class DatabaseManager {
         return json_encode(array("success" => true, "livres" => $livres));
     }
 
-    public function postLivre() {
+    public function postLivre($auteur, $tome) {
         // Insertion d'un livre dans la base de données
     }
+
     
 
     public function souhaitLivre($userID){

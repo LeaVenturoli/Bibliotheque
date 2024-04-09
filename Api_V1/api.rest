@@ -1,10 +1,11 @@
-# POST http://172.20.10.6:8080/User/login.php HTTP/1.1
-# content-type: application/json
 
-# {
-#      "MAIL": "test@test.fr",
-#      "MDP": "test"
-#  }
+POST https://booky-bibliotheque.fr/Api_V1/User/login.php HTTP/1.1
+content-type: application/json
+
+{
+     "MAIL": "leaventu@gmail.com",
+     "MDP": "M@rgo0810"
+ }
 
 
 # POST http://172.20.10.6:8080/livres/get.php HTTP/1.1
@@ -15,9 +16,9 @@
 # }
 
 
-POST http://172.20.10.6:8080/livres/getSouhait.php HTTP/1.1
-content-type: application/json
+# POST https://booky-bibliotheque.fr/Api_V1/livres/getSouhait.php HTTP/1.1
+# content-type: application/json
 
-{
-    "user_id": "37"
-}
+# {
+#     "user_id": "37"
+# }
