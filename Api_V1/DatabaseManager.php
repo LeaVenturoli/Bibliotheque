@@ -72,10 +72,20 @@ class DatabaseManager {
         return json_encode(array("success" => true, "livres" => $livres));
     }
 
-    public function postLivre($auteur, $tome) {
-        // Insertion d'un livre dans la base de données
+    public function postLivre($ID_UTILISATEUR, $titre, $tome, $auteur, $genre, $editions, $date) {
+        $stmt = $this->connection->prepare("INSERT INTO livres (ID_UTILISATEUR, NOM_LIVRE, TOME, AUTEUR, GENRE, EDITIONS, DATE_AJOUT) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssss", $ID_UTILISATEUR, $titre, $tome, $auteur, $genre, $editions, $date);
+        
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else {
+            $error = $stmt->error;
+            $stmt->close();
+            throw new Exception("Erreur lors de l'ajout du livre : " . $error);
+        }
     }
-
+    
     
 
     public function souhaitLivre($userID){

@@ -1,11 +1,11 @@
 
-POST https://booky-bibliotheque.fr/Api_V1/User/login.php HTTP/1.1
-content-type: application/json
+# POST https://booky-bibliotheque.fr/Api_V1/User/login.php HTTP/1.1
+# content-type: application/json
 
-{
-     "MAIL": "leaventu@gmail.com",
-     "MDP": "M@rgo0810"
- }
+# {
+#      "MAIL": "leaventu@gmail.com",
+#      "MDP": "M@rgo0810"
+#  }
 
 
 # POST http://172.20.10.6:8080/livres/get.php HTTP/1.1
@@ -21,4 +21,18 @@ content-type: application/json
 
 # {
 #     "user_id": "37"
-# }
+# }*
+
+
+POST http://localhost:8080/livres/post.php HTTP/1.1
+content-type: application/json
+
+{
+    "ID_UTILISATEUR": "37",
+    "NOM_LIVRE": "Titre du livre",
+    "TOME": "1",
+    "AUTEUR": "Nom de l'auteur",
+    "GENRE": "Genre du livre",
+    "EDITIONS": "Maison d'édition",
+    "DATE_AJOUT": "2023-12-25"
+}

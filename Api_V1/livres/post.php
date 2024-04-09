@@ -10,6 +10,37 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 header('Content-Type: application/json');
 
-if($method == 'POST') {
+if ($method == 'POST') {
+    if (!isset($data['NOM_LIVRE']) || !isset($data['TOME']) || !isset($data['AUTEUR']) || !isset($data['GENRE']) || !isset($data['EDITIONS']) || !isset($data['DATE_AJOUT'])) {
+        http_response_code(400);
+        echo json_encode(array("success" => false, "error" => "Invalid request"));
+        exit;
+    }
 
+    $ID_UTILISATEUR = $data['ID_UTILISATEUR'];
+    $titre = $data['NOM_LIVRE'];
+    $tome = $data['TOME'];
+    $auteur = $data['AUTEUR'];
+    $genre = $data['GENRE'];
+    $editions = $data['EDITIONS'];
+    $date = $data['DATE_AJOUT'];
+
+    try {
+        $created = $databaseManager->postLivre($ID_UTILISATEUR, $titre, $tome, $auteur, $genre, $editions, $date);
+        if ($created) {
+            http_response_code(201);
+            echo json_encode(array("success" => true, "message" => "Livre ajouté avec succès"));
+        } else {
+            http_response_code(500);
+            echo json_encode(array("success" => false, "error" => "Erreur lors de l'ajout du livre"));
+        }
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode(array("success" => false, "error" => $e->getMessage()));
+    }
+} else {
+    http_response_code(405);
+    echo json_encode(array("success" => false, "error" => "Méthode non autorisée"));
 }
+
+?>
