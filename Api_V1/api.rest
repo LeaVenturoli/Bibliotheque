@@ -29,11 +29,11 @@ content-type: application/json
 
 {
     "ID_UTILISATEUR": "37",
-    "NOM_LIVRE": "Hello ",
+    "NOM_LIVRE": "Hello world",
     "TOME": "",
     "AUTEUR": "Nom de l'auteur",
     "GENRE": "Genre du livre",
     "EDITIONS": "Maison d'édition",
     "DATE_AJOUT": "2023-12-25",
-    "SOUHAIT":false
+    "SOUHAIT": false
 }

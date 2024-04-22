@@ -144,6 +144,19 @@ class DatabaseManager {
             return false;
         }
     }
+
+    // public function saveImageName($imageName) {
+    //     // Insérer le nom de l'image dans la base de données
+    //     $query = "INSERT INTO images (nom) VALUES (?)";
+    //     $stmt = $this->connection->prepare($query);
+    //     $stmt->bind_param("s", $imageName);
+        
+    //     if ($stmt->execute()) {
+    //         return true;
+    //     } else {
+    //         throw new Exception("Erreur lors de l'insertion du nom de l'image dans la base de données : " . $this->connection->error);
+    //     }
+    // }
     
 }
 ?>
