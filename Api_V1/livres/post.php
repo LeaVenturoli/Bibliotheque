@@ -27,23 +27,20 @@ if ($method == 'POST') {
     $date = date("Y-m-d");
     $souhait = $data['SOUHAIT'];
 
-    // Gestion de l'image
     $imageData = $data['IMAGES'];
 
-    // Chemin où vous souhaitez enregistrer l'image sur votre serveur
-    $fileName = uniqid() . '.jpg'; // Générer un nom de fichier unique
-    $filePath = "../../images-livres/" . $fileName; // Chemin complet du fichier
+    $fileName = uniqid() . '.jpg'; 
+    $filePath = "../../images-livres/" . $fileName; 
 
-    // Enregistrez l'image sur votre serveur
+  
     $file = fopen($filePath, 'wb');
     fwrite($file, base64_decode($imageData));
     fclose($file);
 
-    // Construisez l'URL de l'image
     $imageUrl = 'http://booky-bibliotheque.fr/images-livres/' . $fileName;
 
     try {
-        $created = $databaseManager->postLivre($ID_UTILISATEUR, $titre, $tome, $auteur, $genre, $editions, $date, $souhait, $fileName); // Passez le nom du fichier, pas les données d'image
+        $created = $databaseManager->postLivre($ID_UTILISATEUR, $titre, $tome, $auteur, $genre, $editions, $date, $souhait, $fileName); 
 
         if ($created) {
             http_response_code(201);

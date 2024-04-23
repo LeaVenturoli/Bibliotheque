@@ -16,7 +16,7 @@ if($method == 'POST') {
         echo json_encode(array("success" => false, "error" => "Requête invalide"));
     } else {
         $livres = $databaseManager->souhaitLivre($data['user_id']);
-        echo $livres; // J'ai modifié ça, fait ctrl Z yavai un json_encode
+        echo $livres;
     }
 } else {
     http_response_code(405);
