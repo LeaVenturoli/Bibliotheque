@@ -1,4 +1,5 @@
 <?php
+
 class DatabaseManager {
     private $connection;
 
@@ -63,7 +64,8 @@ class DatabaseManager {
                     "ID_LIVRE" => $row["ID"],
                     "NOM_LIVRE" => $row["NOM_LIVRE"],
                     "TOME" => $row["TOME"],
-                    "AUTEUR" => $row["AUTEUR"]
+                    "AUTEUR" => $row["AUTEUR"],
+                    "IMAGE" => $row['IMAGES']
                 );
                 $livres[] = $livre;
             }
@@ -73,9 +75,9 @@ class DatabaseManager {
     }
 
     
-    public function postLivre(string $ID_UTILISATEUR, string $titre, ?string $tome, string $auteur, string $genre, string $editions, string $date, bool $souhait): bool {
-        $stmt = $this->connection->prepare("INSERT INTO livres (ID_UTILISATEUR, NOM_LIVRE, TOME, AUTEUR, GENRE, EDITIONS, DATE_AJOUT, SOUHAIT) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssssi", $ID_UTILISATEUR, $titre, $tome, $auteur, $genre, $editions, $date, $souhait);
+    public function postLivre(string $ID_UTILISATEUR, string $titre, ?string $tome, string $auteur, string $genre, string $editions, string $date, bool $souhait, string $imageData): bool {
+        $stmt = $this->connection->prepare("INSERT INTO livres (ID_UTILISATEUR, NOM_LIVRE, TOME, AUTEUR, GENRE, EDITIONS, DATE_AJOUT, SOUHAIT, IMAGES) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssssis", $ID_UTILISATEUR, $titre, $tome, $auteur, $genre, $editions, $date, $souhait, $imageData);
         
         if ($stmt->execute()) {
             $stmt->close();
