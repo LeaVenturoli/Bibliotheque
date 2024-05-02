@@ -8,13 +8,13 @@
 #  }
 
 
-# POST http://172.20.10.6:8080/livres/get.php HTTP/1.1
-# content-type: application/json
+POST https://booky-bibliotheque.fr/Api_V1/livres/get.php HTTP/1.1
+Content-Type: application/json
 
-# {
-#     "user_id": "37"
-# }
-
+{
+    "user_id": "37",
+    "query": "Vol"
+}
 
 # POST https://booky-bibliotheque.fr/Api_V1/livres/getSouhait.php HTTP/1.1
 # content-type: application/json
@@ -24,16 +24,20 @@
 # }*
 
 
-POST http://localhost:8080/livres/post.php HTTP/1.1
-content-type: application/json
+# POST http://localhost:8080/livres/post.php HTTP/1.1
+# content-type: application/json
 
-{
-    "ID_UTILISATEUR": "37",
-    "NOM_LIVRE": "Hello world",
-    "TOME": "",
-    "AUTEUR": "Nom de l'auteur",
-    "GENRE": "Genre du livre",
-    "EDITIONS": "Maison d'édition",
-    "DATE_AJOUT": "2023-12-25",
-    "SOUHAIT": false
-}
+# {
+#     "ID_UTILISATEUR": "37",
+#     "NOM_LIVRE": "Hello world",
+#     "TOME": "",
+#     "AUTEUR": "Nom de l'auteur",
+#     "GENRE": "Genre du livre",
+#     "EDITIONS": "Maison d'édition",
+#     "DATE_AJOUT": "2023-12-25",
+#     "SOUHAIT": false
+# }
+
+# POST http://localhost:8080/livres/post.php HTTP/1.1
+# content-type: application/json
+

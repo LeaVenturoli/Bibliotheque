@@ -50,29 +50,44 @@ class DatabaseManager {
         }
     } 
 
-    public function getLivre($ID_UTILISATEUR) {
-        $stmt = $this->connection->prepare("SELECT * FROM livres WHERE ID_UTILISATEUR = ? AND SOUHAIT = 0");
-        $stmt->bind_param("i", $ID_UTILISATEUR);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        $livres = array(); 
-        
-        if ($result->num_rows > 0) {
+    public function getLivres($userId, $searchQuery = null) {
+        // Si une requête de recherche est fournie
+        if ($searchQuery !== null) {
+            // Préparer la requête avec des paramètres de recherche
+            $searchQuery = "%$searchQuery%";
+            $stmt = $this->connection->prepare("SELECT * FROM livres WHERE ID_UTILISATEUR = ? AND (NOM_LIVRE LIKE ? OR AUTEUR LIKE ? OR GENRE LIKE ?) ORDER BY DATE_AJOUT");
+            $stmt->bind_param("isss", $userId, $searchQuery, $searchQuery, $searchQuery);
+        } else {
+            // Sinon, récupérer tous les livres pour l'utilisateur
+            $stmt = $this->connection->prepare("SELECT * FROM livres WHERE ID_UTILISATEUR = ? AND SOUHAIT = 0");
+            $stmt->bind_param("i", $userId);
+        }
+    
+        // Exécuter la requête
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            $livres = array();
+    
+            // Récupérer les résultats de la requête
             while($row = $result->fetch_assoc()) {
                 $livre = array(
                     "ID_LIVRE" => $row["ID"],
                     "NOM_LIVRE" => $row["NOM_LIVRE"],
                     "TOME" => $row["TOME"],
                     "AUTEUR" => $row["AUTEUR"],
-                    "IMAGE" => $row['IMAGES']
+                    "IMAGE" => $row['IMAGES'] // Assurez-vous que 'IMAGES' est bien le nom de la colonne dans votre base de données
                 );
                 $livres[] = $livre;
             }
+    
+            // Retourner les résultats sous forme de JSON
+            return json_encode(array("success" => true, "livres" => $livres));
+        } else {
+            // En cas d'erreur
+            return json_encode(array("success" => false, "message" => "Erreur lors de la recherche de livres."));
         }
-
-        return json_encode(array("success" => true, "livres" => $livres));
     }
+    
 
     
     public function postLivre(string $ID_UTILISATEUR, string $titre, ?string $tome, string $auteur, string $genre, string $editions, string $date, bool $souhait, string $imageData): bool {
@@ -136,6 +151,8 @@ class DatabaseManager {
             return false;
         }
     }
-    
+
+
 }
+
 ?>
